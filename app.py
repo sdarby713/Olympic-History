@@ -53,6 +53,36 @@ def names():
     # return jsonify("This is it!")
 
 
+@app.route("/medals/<selFrDate>/<selToDate>/<selNOC>/<selSport>")
+def samples(selFrDate, selToDate, selNOC, selSport):
+    stmt = db.session.query(medals).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    # YNS is just there to provide a primary key; real data is elsewhere
+    del df["YNS"]
+
+    selFrDate = int(selFrDate)
+    selToDate = int(selToDate)
+
+    # Filter the data based on the date range
+    df = df.loc[df["Year"] >= selFrDate, :]
+    df = df.loc[df["Year"] <= selToDate, :]
+
+    # Filter the data based on NOC
+    if (selNOC != "All")  :
+        df = df.loc[df["NOC"] == selNOC, :]
+
+    # Filter the data based on Sport
+    if (selSport != "All")  :
+        df = df.loc[df["Sport"] == selSport, :]
+
+    # Format the data to send as json
+    data_json = df.to_json(orient='records')
+ 
+    return data_json
+    # return jsonify(sorted_df)
+
+
 # @app.route("/metadata/<sample>")
 # def sample_metadata(sample):
 #     """Return the MetaData for a given sample."""
@@ -81,34 +111,6 @@ def names():
 
 #     print(sample_metadata)
 #     return jsonify(sample_metadata)
-
-
-# @app.route("/samples/<sample>")
-# def samples(sample):
-#     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
-#     stmt = db.session.query(Samples).statement
-#     df = pd.read_sql_query(stmt, db.session.bind)
-
-#     # Filter the data based on the sample number and
-#     # only keep rows with values above 1
-#     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
-#     # Format the data to send as json
-#     data = {
-#         "otu_ids": sample_data.otu_id.values.tolist(),
-#         "sample_values": sample_data[sample].values.tolist(),
-#         "otu_labels": sample_data.otu_label.tolist(),
-#     }
-
-#     data_df = pd.DataFrame(data)
- 
-#     sorted_df = data_df.sort_values("sample_values", ascending=False)
-#     sorted_df = sorted_df.reset_index(drop=True)
- 
-#     data_json = sorted_df.to_json(orient='records')
- 
-#     return data_json
-#     # return jsonify(sorted_df)
-
 
 if __name__ == "__main__":
     app.run()
