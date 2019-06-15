@@ -18,7 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/olympic-history.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/olympic-history.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -27,8 +27,8 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-# medals = Base.classes.medals
-# NOC = Base.classes.NOC
+medals = Base.classes.medals
+NOC = Base.classes.NOC
 
 @app.route("/")
 def index():
@@ -41,11 +41,16 @@ def names():
     """Return a list of NOC names."""
 
     # Use Pandas to perform the sql query
-    # stmt = db.session.query(NOC).statement
-    # df = pd.read_sql_query(stmt, db.session.bind)
+    stmt = db.session.query(NOC).statement
+    qResults = pd.read_sql_query(stmt, db.session.bind)
 
-    # Return a list of the column names (sample names)
-    return jsonify("this is it!")
+    print(qResults)
+
+    data_json = qResults.to_json(orient='records')
+
+    # Return a list of the NOCs
+    return data_json
+    # return jsonify("This is it!")
 
 
 # @app.route("/metadata/<sample>")
