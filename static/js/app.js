@@ -1,21 +1,9 @@
 function init() {
   // Grab a reference to the dropdown select element
-  var selector1 = d3.select("#selYear");
   var selector2 = d3.select("#selNOC");
   var selector3 = d3.select("#selSport");
-  var selector4 = d3.select("#selGender");
 
-  // Populate the Year selector list
-  selector1
-    .append("option")
-    .text("All")
-    .property("value", "All");
-  for (i=1896; i<2016; i+=4)  {
-    selector1
-      .append("option")
-      .text(i)
-      .property("value", i);
-  }
+  // Populate the NOC selector list
 
   // Populate the Sport selector list
   var sportList = ["All", "Athletics", "Cycling", "Diving", "Fencing", "Gymnastics", "Rowing", "Swimming", "Weightlifting"];
@@ -26,20 +14,11 @@ function init() {
       .property("value", sport);
     });
 
-  // Populate the Gender List
-  var genderList = ["All", "M", "W", "X"];
-  genderList.forEach((gender) => {
-    selector4
-      .append("option")
-      .text(gender)
-      .property("value", gender);
-  });
 
-    // Use the first sample from the list to build the initial plots
-    // const firstSample = sampleNames[0];
-    // console.log("About to call buildCharts");
-    // buildCharts(firstSample);
-    // buildMetadata(firstSample);
+  // Use the defaults to build the initial plots
+  const defaultSelections = [1896, 2016, "All", "All"];
+  // buildCharts(defaultSelections);
+
 
 }
 
@@ -47,3 +26,33 @@ function init() {
 
 // Initialize the dashboard
 init();
+
+// next, set up the select button:
+var btn = d3.select("#filter-btn");
+
+btn.on("click", function() {
+  d3.event.preventDefault();
+
+  var fromYear = d3.select("#frYear").property("value");
+  var toYear   = d3.select("#toYear").property("value");
+  var selectedNOC = d3.select("#selNOC").property("value");
+  var selectedSport = d3.select("#selSport").property("value");
+
+  if (fromYear > " ")  {
+      fromYear = +fromYear
+      if (toYear > " ")  {
+        toYear = +toYear;
+      }
+      else {
+        toYear = fromYear;
+      }
+  }
+  else  {
+      fromYear = 1896;
+      toYear   = 2016;
+  }
+
+  selections = [fromYear, toYear, selectedNOC, selectedSport];
+  console.log(selections);
+  // buildCharts(selections);
+});
