@@ -29,6 +29,7 @@ Base.prepare(db.engine, reflect=True)
 # Save references to each table
 medals = Base.classes.medals
 NOC = Base.classes.NOC
+olympiad = Base.classes.olympiad
 
 @app.route("/")
 def index():
@@ -52,6 +53,20 @@ def names():
     return data_json
     # return jsonify("This is it!")
 
+@app.route("/olympiads")
+def years():
+    """Return a list of NOC names."""
+
+    # Use Pandas to perform the sql query
+    stmt = db.session.query(olympiad).statement
+    qResults = pd.read_sql_query(stmt, db.session.bind)
+
+    print(qResults)
+
+    data_json = qResults.to_json(orient='records')
+
+    # Return the olympiad data
+    return data_json
 
 @app.route("/medals/<selFrDate>/<selToDate>/<selNOC>/<selSport>")
 def samples(selFrDate, selToDate, selNOC, selSport):
