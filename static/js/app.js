@@ -4,6 +4,17 @@ function init() {
   var selector3 = d3.select("#selSport");
 
   // Populate the NOC selector list
+  d3.json(`/names`).then(function(nocdata) {
+    selector2
+      .append("option")
+      .text("All")
+      .property("value", "All") 
+    nocdata.forEach((datum) => {
+      selector2
+        .append("option")
+        .text(datum.NOC)
+        .property("value", datum.NOC)  });
+  });
   
 
   // Populate the Sport selector list
