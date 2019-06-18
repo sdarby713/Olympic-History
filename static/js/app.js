@@ -32,7 +32,10 @@ function init() {
   // buildCharts(defaultSelections);
 
 }
+function buildCharts(sels) {
 
+  
+}
 
 // Initialize the dashboard
 init();
