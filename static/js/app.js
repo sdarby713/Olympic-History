@@ -28,12 +28,10 @@ function init() {
 
 
   // Use the defaults to build the initial plots
-  const defaultSelections = [1896, 2016, "All", "All"];
+  const defaultSelections = [1896, 2016, "All", "All", "M", "W", "X", "G", "S", "B"];
   // buildCharts(defaultSelections);
 
-
 }
-
 
 
 // Initialize the dashboard

@@ -1,0 +1,7 @@
+.jtbg  {
+    background-image: url(Olympic_rings.png);
+    background-size: cover;
+    height: 100%;    
+    min-height: 300px;
+    opacity: 0.3;
+}
