@@ -49,6 +49,37 @@ function buildCharts(sels) {
 };
 
 function buildChart1(oData, year)  {
+
+  // here is a list of where logo images may be found
+  const logos = 
+      [ "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Athens_1896_report_cover.jpg/330px-Athens_1896_report_cover.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/JOParis_1900.jpg/330px-JOParis_1900.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/1904summerolympicsposter.jpg/330px-1904summerolympicsposter.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Olympic_games_1908_London.jpg/330px-Olympic_games_1908_London.jpg",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/1912_Summer_Olympics_poster.jpg/330px-1912_Summer_Olympics_poster.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/7/73/1920_olympics_poster.jpg",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/4/45/1924_Summer_Olympics_logo.svg/330px-1924_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/f/f9/1928_Olympics_poster.jpg",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/1932_Summer_Olympics_logo.svg/255px-1932_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/1936_berlin_logo.jpg/330px-1936_berlin_logo.jpg",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/1948_Summer_Olympics_logos.svg/266px-1948_Summer_Olympics_logos.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/1952_Summer_Olympics_logo.svg/330px-1952_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/1956_Summer_Olympics_logo.svg/225px-1956_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/1/11/1960_Summer_Olympics_logo.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Tokyo_1964_Summer_Olympics_logo.svg/180px-Tokyo_1964_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/1968_Mexico_emblem.svg/330px-1968_Mexico_emblem.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/1972_Summer_Olympics_logo.svg/330px-1972_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/1976_Summer_Olympics_logo.svg/330px-1976_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Emblem_of_the_1980_Summer_Olympics.svg/330px-Emblem_of_the_1980_Summer_Olympics.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/1984_Summer_Olympics_logo.svg/330px-1984_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/d/d6/1988_Summer_Olympics_logo.svg/225px-1988_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/1992_Summer_Olympics_logo.svg/300px-1992_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/1996_Summer_Olympics_logo.svg/255px-1996_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/8/81/2000_Summer_Olympics_logo.svg/287px-2000_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/2004_Summer_Olympics_logo.svg/286px-2004_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/2008_Summer_Olympics_logo.svg/248px-2008_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/d/de/2012_Summer_Olympics_logo.svg/270px-2012_Summer_Olympics_logo.svg.png",
+        "https://upload.wikimedia.org/wikipedia/en/thumb/d/df/2016_Summer_Olympics_logo.svg/267px-2016_Summer_Olympics_logo.svg.png" ]
   for (var i = 0; i < oData.length; i++)  {
     if (year === oData[i].Year)  {
       d3.select("#c1d").text(oData[i].Year)
@@ -58,6 +89,7 @@ function buildChart1(oData, year)  {
       d3.select("#c5d").text(oData[i].Athletes_W)
       d3.select("#c6d").text(oData[i].Sports)
       d3.select("#c7d").text(oData[i].Events)
+      d3.select("img").attr('src', logos[i])
     }
   }
 
