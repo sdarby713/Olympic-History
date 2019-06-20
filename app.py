@@ -45,7 +45,7 @@ def names():
     stmt = db.session.query(NOC).statement
     qResults = pd.read_sql_query(stmt, db.session.bind)
 
-    print(qResults)
+    # print(qResults)
 
     data_json = qResults.to_json(orient='records')
 
@@ -61,7 +61,7 @@ def years():
     stmt = db.session.query(olympiad).statement
     qResults = pd.read_sql_query(stmt, db.session.bind)
 
-    print(qResults)
+    # print(qResults)
 
     data_json = qResults.to_json(orient='records')
 

@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Olympic History</title>
-  <link rel="stylesheet" href="/static/css/styles.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css">   
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Our CSS -->
+  <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
 <body>
@@ -59,28 +63,41 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6">
-        <div id="chart1"></div>
+      <div class="col-md-10">
+        <div id=c1head>
+          <h3>Cities Hosting the Summer Olympics</h3>
+          <h4>Indicating Number of Nations Participating</h4>
+        </div>
+        <iframe src="http:\\127.0.0.1:5001" width="960" height="500"></iframe>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-2">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div id="chart2"></div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div id="chart3"></div>
       </div>
-      <div class="col-md-6">
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div id="chart4"></div>
       </div>
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 
-  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+
+  <script src="{{ url_for('static', filename='js/config.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
 
 </body>
 

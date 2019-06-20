@@ -1,4 +1,8 @@
+// This is a saved version of app.js that "produces" the olympic cities map
+
 function init() {
+  console.log("Entering init function");
+
   // Grab a reference to the dropdown select element
   var selector2 = d3.select("#selNOC");
   var selector3 = d3.select("#selSport");
@@ -29,13 +33,21 @@ function init() {
 
   // Use the defaults to build the initial plots
   const defaultSelections = [1896, 2016, "All", "All", "M", "W", "X", "G", "S", "B"];
-  // buildCharts(defaultSelections);
+  buildCharts(defaultSelections);
 
 }
 function buildCharts(sels) {
+  console.log ("entering buildCharts");
 
-  
-}
+  Promise.all([
+    d3.json(`/names`),
+    d3.json(`/medals/${sels[0]}/${sels[1]}/${sels[2]}/${sels[3]}`),
+    d3.json(`/olympiads`)
+  ]).then(([NOCData, medalData, olympiData]) => {
+      // buildChart1(olympiData);
+  });
+};
+
 
 // Initialize the dashboard
 init();
@@ -89,5 +101,5 @@ btn.on("click", function() {
 
   selections = [fromYear, toYear, selectedNOC, selectedSport, genderMen, genderWomen, genderMixed, medalGold, medalSilver, medalBronze];
   console.log(selections);
-  // buildCharts(selections);
+  buildCharts(selections);
 });
