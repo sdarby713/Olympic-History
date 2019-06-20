@@ -44,10 +44,25 @@ function buildCharts(sels) {
     d3.json(`/medals/${sels[0]}/${sels[1]}/${sels[2]}/${sels[3]}`),
     d3.json(`/olympiads`)
   ]).then(([NOCData, medalData, olympiData]) => {
-      // buildChart1(olympiData);
+      buildChart1(olympiData, sels[0]);
   });
 };
 
+function buildChart1(oData, year)  {
+  for (var i = 0; i < oData.length; i++)  {
+    if (year === oData[i].Year)  {
+      d3.select("#c1d").text(oData[i].Year)
+      d3.select("#c2d").text(oData[i].City)
+      d3.select("#c3d").text(oData[i].Nations)
+      d3.select("#c4d").text(oData[i].Athletes_M)
+      d3.select("#c5d").text(oData[i].Athletes_W)
+      d3.select("#c6d").text(oData[i].Sports)
+      d3.select("#c7d").text(oData[i].Events)
+    }
+  }
+
+
+}
 
 // Initialize the dashboard
 init();
