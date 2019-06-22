@@ -45,6 +45,7 @@ function buildCharts(sels) {
     d3.json(`/olympiads`)
   ]).then(([NOCData, medalData, olympiData]) => {
       buildChart1(olympiData, sels[0]);
+      // buildChart2(medaldata);
   });
 };
 
@@ -95,6 +96,14 @@ function buildChart1(oData, year)  {
 
 
 }
+
+
+// function buildChart2(medaldata)  {
+
+
+// }
+
+
 
 // Initialize the dashboard
 init();
