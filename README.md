@@ -12,3 +12,5 @@ This page can be accessed through https://sdarby713-ohistory.herokuapp.com/
 ### Notes:
 
 The "ocities" folder holds files required by the secondary cities map server
+
+Also see Olympic_History_Revisited for an updated an enhanced version of this.
