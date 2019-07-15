@@ -14,4 +14,5 @@ For now, this page can be accessed through https://sdarby713-ohistory.herokuapp.
 See the "olympic-map" repository for files required by the secondary cities map server
 
 Largely supplanted by Olympic_History_Revisited q.v. 
+
 Olympic_History_Revisited is an updated and enhanced version of Olympic_History
