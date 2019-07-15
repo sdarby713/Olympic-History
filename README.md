@@ -7,10 +7,11 @@ For a bit more information, enter a "from year" in the selection field and  we'l
 We present a barchart of the top medal winners for any selected year.
 Finally, information about the profits and losses of games starting in 1976 are presented in a variety of formats.
 
-This page can be accessed through https://sdarby713-ohistory.herokuapp.com/
+For now, this page can be accessed through https://sdarby713-ohistory.herokuapp.com/
 
-### Notes:
+## Notes:
 
-The "ocities" folder holds files required by the secondary cities map server
+See the "olympic-map" repository for files required by the secondary cities map server
 
-Also see Olympic_History_Revisited for an updated an enhanced version of this.
+Largely supplanted by Olympic_History_Revisited q.v. 
+Olympic_History_Revisited is an updated and enhanced version of Olympic_History
